@@ -13,24 +13,24 @@ Hooks.once('ready', () => {
       }
    })
 
-   window.addEventListener('keydown', event => {
-      if (event.isComposing) return; // Ignore IME composition
+   // window.addEventListener('keydown', event => {
+   //    if (event.isComposing) return; // Ignore IME composition
 
-      let local = localKeys.indexOf(event.key)
-      let global = globalKeys.indexOf(event.key)
-      if (event.ctrlKey && local != -1) {
-         console.log(`Control + ${event.key}`)
-         canvas.layers[local].visible = !canvas.layers[local].visible
-      } else if (event.ctrlKey && event.shiftKey && global != -1) {
-         console.log(`Control + Shift + ${event.key}`)
-         canvas.layers[global].visible = !canvas.layers[global].visible
-         game.socket.emit('module.advanced-layer-controls', {
-            layer: global,
-            visible: canvas.layers[global].visible
-         })
-      }
+   //    let local = localKeys.indexOf(event.key)
+   //    let global = globalKeys.indexOf(event.key)
+   //    if (event.ctrlKey && local != -1) {
+   //       console.log(`Control + ${event.key}`)
+   //       canvas.layers[local].visible = !canvas.layers[local].visible
+   //    } else if (event.ctrlKey && event.shiftKey && global != -1) {
+   //       console.log(`Control + Shift + ${event.key}`)
+   //       canvas.layers[global].visible = !canvas.layers[global].visible
+   //       game.socket.emit('module.advanced-layer-controls', {
+   //          layer: global,
+   //          visible: canvas.layers[global].visible
+   //       })
+   //    }
 
-   })
+   // })
 
 })
 
