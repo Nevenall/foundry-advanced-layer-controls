@@ -19,3 +19,7 @@ Interesting the layers are not recreated when the scene changes. making these to
 Also, interesting, doors seem to be on their own layer somewhere. 
 also, probably need a button to reset to default. specially if we reorder layers.
 
+Looks like sidebar tabs have a template for html and a class to drive them. We would probs have to inject a new nav for the tab, 
+not super easy. the alternative would be to have the advanced dialog button in the scene controls, but that seems kinda dull. 
+
+
