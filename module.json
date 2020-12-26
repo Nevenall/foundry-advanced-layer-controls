@@ -2,7 +2,7 @@
   "name": "advanced-layer-controls",
   "title": "Advanced Layer Controls",
   "description": "Provides tools for manipulating canvas layers",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "nevenall",
   "socket": true,
   "scripts": [
