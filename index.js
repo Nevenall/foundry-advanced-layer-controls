@@ -4,8 +4,10 @@ const globalKeys = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', 
 Hooks.once('ready', () => {
 
    game.socket.on('module.advanced-layer-controls', async data => {
-      console.log(data)
-      let layer = canvas.layers.find(l => l.name === data.layer)
+
+
+      let layer = data.layer === 'Doors' ? canvas.controls.doors : canvas.layers.find(l => l.name === data.layer)
+
       if (layer.visible != data.visible) {
          layer.visible = data.visible
       }
@@ -43,6 +45,22 @@ Hooks.on('getSceneControlButtons', buttons => {
       activeTool: 'toggle-tokens',
       visible: true,
       tools: [{
+         name: 'toggle-doors',
+         title: 'Toggle doors',
+         icon: 'fas fa-door-open',
+         toggle: true,
+         active: canvas.controls.doors.visible,
+         visible: true,
+         onClick: value => {
+            canvas.controls.doors.visible = value
+            if (game.user.isGM /* && the push to clients setting is active */) {
+               game.socket.emit('module.advanced-layer-controls', {
+                  layer: 'Doors',
+                  visible: value
+               })
+            }
+         }
+      }, {
          name: 'toggle-effects',
          title: 'Toggle effects layer',
          icon: 'fas fa-shield-alt',
