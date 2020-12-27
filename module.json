@@ -2,13 +2,15 @@
   "name": "advanced-layer-controls",
   "title": "Advanced Layer Controls",
   "description": "Provides tools for manipulating canvas layers",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "nevenall",
   "socket": true,
-  "scripts": [
-    "./index.js"
+  "esmodules": [
+    "index.js"
   ],
-  "styles": [],
+  "styles": [
+    "css/layers.css"
+  ],
   "packs": [],
   "url": "https://github.com/Nevenall/foundry-advanced-layer-controls",
   "manifest": "https://raw.githubusercontent.com/Nevenall/foundry-advanced-layer-controls/main/module.json",

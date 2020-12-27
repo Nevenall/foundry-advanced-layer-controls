@@ -1,0 +1,95 @@
+#sidebar {
+   width: 326px;
+}
+
+#layers {
+   flex-shrink: 0;
+}
+
+#layers .layers-list {
+   margin: 10px 10px 0 10px;
+   padding-left: 0;
+}
+
+#layers .opacity {
+   display: flex;
+}
+
+#layers .layer-row {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   border-bottom: 1px solid rgb(34, 34, 34);
+   padding: 5px 0 5px 0;
+}
+
+#layers .layer-row div {
+   margin-left: 5px;
+   width:100%;
+}
+
+#layers .layer-row i {
+   height: 3rem;
+   width: 3rem;
+   font-size: 3rem;
+}
+
+#layers .toggle {
+   cursor: pointer;
+   display: inline-block;
+}
+
+#layers .toggle-switch {
+   display: inline-block;
+   border-width: 1px;
+   border-style: solid;
+   border-color: #eee;
+   border-radius: 16px;
+   width: 29px;
+   height: 16px;
+   position: relative;
+   vertical-align: middle;
+   transition: background 0.25s;
+}
+
+#layers .toggle-switch:before,
+#layers .toggle-switch:after {
+   content: "";
+}
+
+#layers .toggle-switch:before {
+   display: block;
+   background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+   border-radius: 50%;
+   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+   width: 12px;
+   height: 12px;
+   position: absolute;
+   top: 1px;
+   left: 1px;
+   transition: left 0.25s;
+}
+
+#layers .toggle:hover .toggle-switch:before {
+   background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+#layers .toggle-checkbox:checked+.toggle-switch {
+   background: #8a8b8b;
+}
+
+#layers .toggle-checkbox:checked+.toggle-switch:before {
+   left: 14px;
+}
+
+#layers .toggle-checkbox {
+   position: absolute;
+   visibility: hidden;
+}
+
+#layers .toggle-label {
+   margin-left: 5px;
+   position: relative;
+   top: 2px;
+}
