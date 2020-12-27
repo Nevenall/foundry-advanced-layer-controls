@@ -14,11 +14,8 @@ export default class Layers extends SidebarTab {
 
    /** @override */
    async getData(options) {
-
-
       let global = game.settings.get('advanced-layer-controls', 'global')
 
-      // debugger
 
       return {
          global: global,

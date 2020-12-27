@@ -23,3 +23,27 @@ Looks like sidebar tabs have a template for html and a class to drive them. We w
 not super easy. the alternative would be to have the advanced dialog button in the scene controls, but that seems kinda dull. 
 
 
+## 12.27.2020, danb
+
+got the basics of the layers sidebar working. We can adjust opacity for every layer dynamically. There's still things we might want, like specificly door controls vs. all control layer stuff. 
+
+question - is there a diff between visible and renderable? they are diff properties. Wonder how they affect things?
+
+big todos:
+
+- ☐ support propegating changes to all clients
+  - need to add conditional to every possible change we can make
+  - and create a state adjuster class on the client side to interpret every change we can make
+  - be cool if we could use the same state adjuster for both? Reducer? we can give it the appropriate action to take, ie, BackgroundLayer set opacity to .5, then is could conditionally propegate changes. Poor man's flux. 
+- ☐ need on/off toggle for layers sidebar
+- ☐ need to store the state as we make changes
+  - our state store reducer could help there too
+  - also need the ability to restore state to default
+  - currently the state is global to the app, does it make more sense for these settings to be scoped to the scene?
+- ☐ need a reset button for when you want to go back to default
+- ☐ support reordering layers
+- ☐ icons for each layer in sidebar
+- ☐ GM only layer
+  - you can move any canvas item here and only gms can see them
+  - you can also switch to gm layer mode and anything you create will be placed there instead. 
+
