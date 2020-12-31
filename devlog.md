@@ -47,3 +47,15 @@ big todos:
   - you can move any canvas item here and only gms can see them
   - you can also switch to gm layer mode and anything you create will be placed there instead. 
 
+## 12.28.2020, danb
+
+So, updates. when the layers init we get the data from settings and then what? we adjust our layers according to the settings? is that a reducer action? 
+hold onto data. mm...
+We have to match existing state with setting state, but I want to do it only once. 
+On, setup?
+
+## 12.30.2020, danb
+
+Ok, so we can propegate changes successfully, but we do have the issue with keeping things correctly in sync. If the GM sends a change and a new player joins we need the state to be correct especially to keep the UI correct. 
+
+We need to set the initial state of the ui, and then respond correctly to updates. When something changes 

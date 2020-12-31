@@ -1,3 +1,5 @@
+import reduce from '../reducer.js'
+
 export default class Layers extends SidebarTab {
    constructor(options) {
       super(options)
@@ -16,32 +18,44 @@ export default class Layers extends SidebarTab {
    async getData(options) {
       let global = game.settings.get('advanced-layer-controls', 'global')
 
-
       return {
+         user: game.user,
          global: global,
          layers: canvas.layers.reverse()
       }
-
    }
 
    /** @override */
    activateListeners(html) {
 
       html.find('#global-setting').click(ev => {
-         console.log(`ALC | `, ev.currentTarget.checked)
          game.settings.set('advanced-layer-controls', 'global', ev.currentTarget.checked)
       })
 
       html.find('.opacity-slider').change(ev => {
-         // console.log(`ALC | `, ev)
-         // debugger
          let el = ev.currentTarget
-         let layer = canvas.layers.find(l => l.name === el.dataset.layer)
-         layer.alpha = ev.currentTarget.value
+         reduce({
+            action: 'opacity',
+            layer: el.dataset.layer,
+            value: el.value
+         })
       })
 
+      html.find('.visible').click(ev => {
+         let el = ev.currentTarget
+         let classes = el.firstElementChild.classList
+         // debugger
 
-
-
+         reduce({
+            action: 'visible',
+            layer: el.dataset.layer
+         }, up => {
+            if (up.value) {
+               classes.value = 'fas fa-eye'
+            } else {
+               classes.value = 'fas fa-eye-slash'
+            }
+         })
+      })
    }
 }

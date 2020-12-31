@@ -21,14 +21,31 @@
    align-items: center;
    border-bottom: 1px solid rgb(34, 34, 34);
    padding: 5px 0 5px 0;
+   margin: 0 5px 0 5px;
+   width: 100%;
 }
 
-#layers .layer-row div {
-   margin-left: 5px;
-   width:100%;
+
+#layers .layer-row div.layer-container {
+   margin: 0 5px 0 5px;
+   width: 100%;
 }
 
-#layers .layer-row i {
+#layers .layer-row div.layer-controls {
+   display: flex;
+   width: 100%;
+}
+
+#layers .layer-row div.layer-controls>a {
+   display: flex;
+   align-items: center;
+}
+
+#layers .layer-row div.layer-controls>* {
+   margin: 0 0 0 5px;
+}
+
+#layers .layer-row>i {
    height: 3rem;
    width: 3rem;
    font-size: 3rem;
@@ -93,3 +110,5 @@
    position: relative;
    top: 2px;
 }
+
+

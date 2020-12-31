@@ -1,54 +1,13 @@
 import CustomSidebar from './ui/custom-sidebar.js'
 import Layers from './ui/layers.js'
-
-
-
-// const localKeys = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=']
-// const globalKeys = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+']
+import reduce from './reducer.js'
 
 Hooks.once('init', () => {
 
    // process our module events
-   game.socket.on('module.advanced-layer-controls', async data => {
-
-
-switch (data.action) {
-   case 'value':
-
-      break;
-
-   default:
-      break;
-}
-
-      let layer = data.layer === 'Doors' ? canvas.controls.doors : canvas.layers.find(l => l.name === data.layer)
-
-      if (layer.visible != data.visible) {
-         layer.visible = data.visible
-      }
+   game.socket.on('module.advanced-layer-controls', data => {
+      reduce(data)
    })
-
-   // window.addEventListener('keydown', event => {
-   //    if (event.isComposing) return; // Ignore IME composition
-
-   //    let local = localKeys.indexOf(event.key)
-   //    let global = globalKeys.indexOf(event.key)
-   //    if (event.ctrlKey && local != -1) {
-   //       console.log(`Control + ${event.key}`)
-   //       canvas.layers[local].visible = !canvas.layers[local].visible
-   //    } else if (event.ctrlKey && event.shiftKey && global != -1) {
-   //       console.log(`Control + Shift + ${event.key}`)
-   //       canvas.layers[global].visible = !canvas.layers[global].visible
-   //       game.socket.emit('module.advanced-layer-controls', {
-   //          layer: global,
-   //          visible: canvas.layers[global].visible
-   //       })
-   //    }
-
-   // })
-
-
-
 })
 
 Hooks.on('getSceneControlButtons', buttons => {
@@ -262,19 +221,39 @@ Hooks.on('getSceneControlButtons', buttons => {
 
 Hooks.once('setup', () => {
 
-   game.settings.register("advanced-layer-controls", "global", {
-      name: "When the GM makes layer changes, send them to all players",
-      scope: "client",
-      config: false,
+   game.settings.register('advanced-layer-controls', 'global', {
+      name: 'When the GM makes layer changes, send them to all players',
+      scope: 'client',
+      config: true,
       default: false,
       type: Boolean,
       onChange: value => {
          // when true, propegate layer configs to players. 
          // from now on? or the 
-         console.log("global setting changed to", value)
+         console.log('global setting changed to', value)
       }
    })
 
+
+   game.settings.register('advanced-layer-controls', 'data', {
+      name: 'Current state of layer data',
+      scope: 'client',
+      config: false,
+      default: {
+         layers: {}
+      },
+      type: Object,
+      onChange: value => {
+         // when true, propegate layer configs to players. 
+         // from now on? or the 
+         console.log('global setting changed to', value)
+      }
+   })
+
+   // todo - match our state to the data. Once. on startup
+   let state = game.settings.get('advanced-layer-controls', 'data')
+
+   // debugger
 
 
    // On setup we override the existing sidebar with our own custom sidebar
