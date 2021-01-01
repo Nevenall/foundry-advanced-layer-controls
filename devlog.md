@@ -58,4 +58,15 @@ On, setup?
 
 Ok, so we can propegate changes successfully, but we do have the issue with keeping things correctly in sync. If the GM sends a change and a new player joins we need the state to be correct especially to keep the UI correct. 
 
-We need to set the initial state of the ui, and then respond correctly to updates. When something changes 
+We need to set the initial state of the ui, and then respond correctly to updates. 
+
+## 12.31.2020, danb
+
+A plan, we store the updates so we can replay them when a new player connects. rxjs subject? On shutdown we snapshot the events for startup so, there are stored local events and there are pushed events. mmm..all stored events are local, technically. 
+
+resolve local changes with global changes
+
+- on startup
+  - we want the UI and canvas to match 
+
+you know, what if we skip trying to persist the state? that would resolve a lot of things. 

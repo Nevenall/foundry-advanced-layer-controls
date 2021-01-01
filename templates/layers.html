@@ -15,10 +15,14 @@
          <div class="layer-container">
             <h3>{{this.name}}</h3>
             <div class="layer-controls">
+
                <a class="visible" title="Layer Visibility" data-layer="{{this.name}}">
                   <i class="fas {{#if this.visible}}fa-eye{{else}}fa-eye-slash{{/if}}"></i>
                </a>
+
                <input class="opacity-slider" data-layer="{{this.name}}" title="Layer Opacity" type="range" min="0" max="1" step="0.05" value="{{this.alpha}}" />
+
+              
             </div>
          </div>
       </li>

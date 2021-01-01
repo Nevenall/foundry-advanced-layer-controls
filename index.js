@@ -229,35 +229,11 @@ Hooks.once('setup', () => {
       type: Boolean,
       onChange: value => {
          // when true, propegate layer configs to players. 
-         // from now on? or the 
          console.log('global setting changed to', value)
       }
    })
-
-
-   game.settings.register('advanced-layer-controls', 'data', {
-      name: 'Current state of layer data',
-      scope: 'client',
-      config: false,
-      default: {
-         layers: {}
-      },
-      type: Object,
-      onChange: value => {
-         // when true, propegate layer configs to players. 
-         // from now on? or the 
-         console.log('global setting changed to', value)
-      }
-   })
-
-   // todo - match our state to the data. Once. on startup
-   let state = game.settings.get('advanced-layer-controls', 'data')
-
-   // debugger
-
 
    // On setup we override the existing sidebar with our own custom sidebar
-   // note - this is a pretty big change and can create conficts, especially if other modules also adjust the sidebar
    CONFIG.ui.sidebar = CustomSidebar
    CONFIG.ui.layers = Layers
 })

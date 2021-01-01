@@ -44,8 +44,6 @@ export default class Layers extends SidebarTab {
       html.find('.visible').click(ev => {
          let el = ev.currentTarget
          let classes = el.firstElementChild.classList
-         // debugger
-
          reduce({
             action: 'visible',
             layer: el.dataset.layer
