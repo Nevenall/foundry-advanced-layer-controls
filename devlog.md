@@ -70,3 +70,9 @@ resolve local changes with global changes
   - we want the UI and canvas to match 
 
 you know, what if we skip trying to persist the state? that would resolve a lot of things. 
+
+## 1.1.2020, danb
+
+Skip the storing of the state of the layers locally. then we don't have to deal with merging all the changes together. 
+Now we can add the GM only Layer, on top of most things. 
+there is a switch to say whether to place everything on the gm layer or not. 

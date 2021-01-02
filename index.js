@@ -10,6 +10,37 @@ Hooks.once('init', () => {
    })
 })
 
+Hooks.once('setup', () => {
+
+   // todo - add gm only layer
+   
+
+
+   game.settings.register('advanced-layer-controls', 'global', {
+      name: 'When the GM makes layer changes, send them to all players',
+      scope: 'client',
+      config: true,
+      default: false,
+      type: Boolean
+   })
+
+   game.settings.register('advanced-layer-controls', 'gm-only', {
+      name: 'When true, all new items will be added to the GM only layer',
+      scope: 'client',
+      config: true,
+      default: false,
+      type: Boolean
+   })
+
+   // On setup we override the existing sidebar with our own custom sidebar
+   CONFIG.ui.sidebar = CustomSidebar
+   CONFIG.ui.layers = Layers
+})
+
+Hooks.once('ready', () => {
+   ui.sidebar.activateTab('layers')
+})
+
 Hooks.on('getSceneControlButtons', buttons => {
    // setup the layer control buttons
    buttons.push({
@@ -217,27 +248,4 @@ Hooks.on('getSceneControlButtons', buttons => {
          }
       ]
    })
-})
-
-Hooks.once('setup', () => {
-
-   game.settings.register('advanced-layer-controls', 'global', {
-      name: 'When the GM makes layer changes, send them to all players',
-      scope: 'client',
-      config: true,
-      default: false,
-      type: Boolean,
-      onChange: value => {
-         // when true, propegate layer configs to players. 
-         console.log('global setting changed to', value)
-      }
-   })
-
-   // On setup we override the existing sidebar with our own custom sidebar
-   CONFIG.ui.sidebar = CustomSidebar
-   CONFIG.ui.layers = Layers
-})
-
-Hooks.once('ready', () => {
-   ui.sidebar.activateTab('layers')
 })
