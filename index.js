@@ -38,7 +38,8 @@ Hooks.once('setup', () => {
 })
 
 Hooks.once('ready', () => {
-   ui.sidebar.activateTab('layers')
+   // handy for development
+   // ui.sidebar.activateTab('layers')
 })
 
 Hooks.on('getSceneControlButtons', buttons => {
